@@ -44,16 +44,50 @@
             </tr>
         </thead>
         <tbody>
-            <tr><td>Coronary Arteries</td><td>ASOCA</td><td>CCTA</td><td>Coronary Arteries</td><td>40,20</td><td>Unknown</td><td><a href="https://reshare.ukdataservice.ac.uk/855916/" target="_blank">Link</a></td><td><a href="https://doi.org/10.1016/j.crad.2020.01.012" target="_blank">Link</a></td><td>nan</td><td><button class="copy-button" onclick="copyToClipboard(`@article{{gharleghi2022automated,
-  title={{Automated segmentation of normal and diseased coronary arteries--the asoca challenge}},
-  author={{Gharleghi, Ramtin and others}},
-  journal={{Computerized Medical Imaging and Graphics}},
-  volume={{97}},
-  pages={{102049}},
-  year={{2022}},
-  publisher={{Elsevier}}
-}')">Copy</button></td></tr>
-            <tr><td>Pelvis</td><td>Prostate Anatomical Edge Cases</td><td>CT</td><td>5 classes</td><td>131</td><td>CC BY 4.0</td><td><a href="https://www.cancerimagingarchive.net" target="_blank">Link</a></td><td><a href="https://doi.org/10.1016/j.crad.2020.01.012" target="_blank">Link</a></td><td>nan</td><td><button class="copy-button" onclick="copyToClipboard('@article{kanwar2023stress,
+            <tr>
+                <td>Coronary Arteries</td>
+                <td>ASOCA</td>
+                <td>CCTA</td>
+                <td>Coronary Arteries</td>
+                <td>40,20</td>
+                <td>Unknown</td>
+                <td><a href="https://reshare.ukdataservice.ac.uk/855916/" target="_blank">Link</a></td>
+                <td><a href="https://doi.org/10.1016/j.crad.2020.01.012" target="_blank">Link</a></td>
+                <td>nan</td>
+                <td>
+                    <button class="copy-button" onclick="copyBib(0)">Copy</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Pelvis</td>
+                <td>Prostate Anatomical Edge Cases</td>
+                <td>CT</td>
+                <td>5 classes</td>
+                <td>131</td>
+                <td>CC BY 4.0</td>
+                <td><a href="https://www.cancerimagingarchive.net" target="_blank">Link</a></td>
+                <td><a href="https://doi.org/10.1016/j.crad.2020.01.012" target="_blank">Link</a></td>
+                <td>nan</td>
+                <td>
+                    <button class="copy-button" onclick="copyBib(1)">Copy</button>
+                </td>
+            </tr>
+            <!-- Repeat similar structure for other rows -->
+        </tbody>
+    </table>
+    <script>
+        // Store the Bib content in an array
+        const bibArray = [
+            `@article{gharleghi2022automated,
+  title={Automated segmentation of normal and diseased coronary arteries--the asoca challenge},
+  author={Gharleghi, Ramtin and others},
+  journal={Computerized Medical Imaging and Graphics},
+  volume={97},
+  pages={102049},
+  year={2022},
+  publisher={Elsevier}
+}`,
+            `@article{kanwar2023stress,
   title={Stress-testing pelvic autosegmentation algorithms using anatomical edge cases},
   author={Kanwar, Aasheesh and Merz, Brandon and Claunch, Cheryl and Rana, Shushan and Hung, Arthur and Thompson, Reid F},
   journal={Physics and Imaging in Radiation Oncology},
@@ -61,12 +95,12 @@
   pages={100413},
   year={2023},
   publisher={Elsevier}
-}')">Copy</button></td></tr>
-            <!-- Repeat similar structure for other rows -->
-        </tbody>
-    </table>
-    <script>
-        function copyToClipboard(content) {
+}`
+        ];
+
+        // Copy the selected Bib content to the clipboard
+        function copyBib(index) {
+            const content = bibArray[index];
             navigator.clipboard.writeText(content).then(() => {
                 alert("Content copied to clipboard!");
             }).catch(err => {
