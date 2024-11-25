@@ -3,16 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dataset Table</title>
+    <title>Welcome to Medsam Dataset List</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px;
+            background-color: #ddd;
+            color: #333;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
         table {
             border-collapse: collapse;
             width: 100%;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
         th, td {
             border: 1px solid #ddd;
@@ -36,45 +63,57 @@
     </style>
 </head>
 <body>
-    <h1>Dataset Table</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Dataset Name</th><th>Anatomy</th><th>Modality</th><th>Segmentation Targets</th><th># Images</th><th>License</th><th>Data</th><th>Paper Links</th><th>Note</th><th>Bib</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Coronary Arteries</td>
-                <td>ASOCA</td>
-                <td>CCTA</td>
-                <td>Coronary Arteries</td>
-                <td>40,20</td>
-                <td>Unknown</td>
-                <td><a href="https://reshare.ukdataservice.ac.uk/855916/" target="_blank">Link</a></td>
-                <td><a href="https://doi.org/10.1016/j.crad.2020.01.012" target="_blank">Link</a></td>
-                <td>nan</td>
-                <td>
-                    <button class="copy-button" onclick="copyBib(0)">Copy</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Pelvis</td>
-                <td>Prostate Anatomical Edge Cases</td>
-                <td>CT</td>
-                <td>5 classes</td>
-                <td>131</td>
-                <td>CC BY 4.0</td>
-                <td><a href="https://www.cancerimagingarchive.net" target="_blank">Link</a></td>
-                <td><a href="https://doi.org/10.1016/j.crad.2020.01.012" target="_blank">Link</a></td>
-                <td>nan</td>
-                <td>
-                    <button class="copy-button" onclick="copyBib(1)">Copy</button>
-                </td>
-            </tr>
-            <!-- Repeat similar structure for other rows -->
-        </tbody>
-    </table>
+    <header>
+        <h1>Welcome to Medsam Dataset List</h1>
+    </header>
+    <main>
+        <p>This is a demo website for listing and managing datasets.</p>
+        <p>You can edit this page to include more details about your project.</p>
+        <!-- <a href="https://github.com/Medsam-DatasetList">Visit our GitHub Repository</a> -->
+
+        <h2>Dataset Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dataset Name</th><th>Anatomy</th><th>Modality</th><th>Segmentation Targets</th><th># Images</th><th>License</th><th>Data</th><th>Paper Links</th><th>Note</th><th>Bib</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Coronary Arteries</td>
+                    <td>ASOCA</td>
+                    <td>CCTA</td>
+                    <td>Coronary Arteries</td>
+                    <td>40,20</td>
+                    <td>Unknown</td>
+                    <td><a href="https://reshare.ukdataservice.ac.uk/855916/" target="_blank">Link</a></td>
+                    <td><a href="https://doi.org/10.1016/j.crad.2020.01.012" target="_blank">Link</a></td>
+                    <td>nan</td>
+                    <td>
+                        <button class="copy-button" onclick="copyBib(0)">Copy</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Pelvis</td>
+                    <td>Prostate Anatomical Edge Cases</td>
+                    <td>CT</td>
+                    <td>5 classes</td>
+                    <td>131</td>
+                    <td>CC BY 4.0</td>
+                    <td><a href="https://www.cancerimagingarchive.net" target="_blank">Link</a></td>
+                    <td><a href="https://doi.org/10.1016/j.crad.2020.01.012" target="_blank">Link</a></td>
+                    <td>nan</td>
+                    <td>
+                        <button class="copy-button" onclick="copyBib(1)">Copy</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2024 Medsam Dataset List</p>
+    </footer>
+
     <script>
         // Store the Bib content in an array
         const bibArray = [
