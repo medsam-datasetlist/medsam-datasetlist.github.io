@@ -1,54 +1,93 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Medsam Dataset List</title>
+    <title>Dataset Table</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            margin: 20px;
         }
-        header {
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .copy-button {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
-            text-align: center;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
         }
-        main {
-            padding: 20px;
-            text-align: center;
-        }
-        footer {
-            margin-top: 20px;
-            text-align: center;
-            padding: 10px;
-            background-color: #ddd;
-            color: #333;
-        }
-        a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
+        .copy-button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Medsam Dataset List</h1>
-    </header>
-    <main>
-        <p>This is a demo website for listing and managing datasets.</p>
-        <p>You can edit this page to include more details about your project.</p>
-        <a href="https://github.com/Medsam-DatasetList">Visit our GitHub Repository</a>
-    </main>
-    <footer>
-        <p>&copy; 2024 Medsam Dataset List</p>
-    </footer>
+    <h1>Dataset Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Dataset Name</th><th>Anatomy</th><th>Modality</th><th>Segmentation Targets</th><th># images</th><th>License</th><th>Data</th><th>Paper links</th><th>Note</th><th>bib</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Coronary Arteries</td><td>ASOCA</td><td>CCTA</td><td>Coronary Arteries</td><td>40,20</td><td>Unknown</td><td>https://reshare.ukdataservice.ac.uk/855916/</td><td>Automated segmentation of normal and diseased coronary arteries – The ASOCA challenge - ScienceDirect</td><td>nan</td><td><button class="copy-button" onclick="copyToClipboard('@article{gharleghi2022automated,
+  title={Automated segmentation of normal and diseased coronary arteries--the asoca challenge},
+  author={Gharleghi, Ramtin and Adikari, Dona and Ellenberger, Katy and Ooi, Sze-Yuan and Ellis, Chris and Chen, Chung-Ming and Gao, Ruochen and He, Yuting and Hussain, Raabid and Lee, Chia-Yen and others},
+  journal={Computerized Medical Imaging and Graphics},
+  volume={97},
+  pages={102049},
+  year={2022},
+  publisher={Elsevier}
+}')">Copy</button></td></tr><tr><td>Pelvis</td><td>Prostate Anatomical Edge Cases</td><td>CT</td><td>5 classes</td><td>131</td><td>CC BY 4.0</td><td>PROSTATE-ANATOMICAL-EDGE-CASES - The Cancer Imaging Archive (TCIA)</td><td>Stress-testing pelvic autosegmentation algorithms using anatomical edge cases - ScienceDirect</td><td>nan</td><td><button class="copy-button" onclick="copyToClipboard('@article{kanwar2023stress,
+  title={Stress-testing pelvic autosegmentation algorithms using anatomical edge cases},
+  author={Kanwar, Aasheesh and Merz, Brandon and Claunch, Cheryl and Rana, Shushan and Hung, Arthur and Thompson, Reid F},
+  journal={Physics and Imaging in Radiation Oncology},
+  volume={25},
+  pages={100413},
+  year={2023},
+  publisher={Elsevier}
+}')">Copy</button></td></tr><tr><td>WORD</td><td>Abdomen</td><td>CT</td><td>Abdomen organs</td><td>170</td><td>GNU General Public License v3.0</td><td>https://github.com/HiLab-git/WORD</td><td>https://www.sciencedirect.com/science/article/pii/S1361841522002705</td><td>Authors are very responsive for data request</td><td><button class="copy-button" onclick="copyToClipboard('@article{luo2022word,
+  title={WORD: A large scale dataset, benchmark and clinical applicable study for abdominal organ segmentation from CT image},
+  author={Luo, Xiangde and Liao, Wenjun and Xiao, Jianghong and Chen, Jieneng and Song, Tao and Zhang, Xiaofan and Li, Kang and Metaxas, Dimitris N and Wang, Guotai and Zhang, Shaoting},
+  journal={Medical Image Analysis},
+  volume={82},
+  pages={102642},
+  year={2022},
+  publisher={Elsevier}
+}')">Copy</button></td></tr><tr><td>Adrenal-ACC-Ki67-Seg</td><td>Abdomen</td><td>CT</td><td>Adrenocortical carcinoma</td><td>53</td><td>CC BY 4.0</td><td>https://doi.org/10.7937/1FPG-VM46</td><td>https://doi.org/10.1016/j.crad.2020.01.012</td><td>Included in training set</td><td><button class="copy-button" onclick="copyToClipboard('@article{ahmed2020radiomic,
+  title={Radiomic mapping model for prediction of Ki-67 expression in adrenocortical carcinoma},
+  author={Ahmed, AA and Elmohr, MM and Fuentes, D and Habra, MA and Fisher, SB and Perrier, ND and Zhang, M and Elsayes, KM},
+  journal={Clinical Radiology},
+  volume={75},
+  number={6},
+  pages={479--e17},
+  year={2020}
+}')">Copy</button></td></tr>
+        </tbody>
+    </table>
+    <script>
+        function copyToClipboard(content) {
+            navigator.clipboard.writeText(content).then(() => {
+                alert("Content copied to clipboard!");
+            }).catch(err => {
+                console.error("Copy failed: ", err);
+            });
+        }
+    </script>
 </body>
 </html>
