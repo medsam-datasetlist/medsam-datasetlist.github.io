@@ -68,13 +68,12 @@
         .sort-icon {
             font-size: 0.8em;
             margin-left: 5px;
-            color: gray;
         }
-        .sort-asc .sort-icon {
-            color: green;
+        th.sort-asc .sort-icon {
+            content: "▲";
         }
-        .sort-desc .sort-icon {
-            color: red;
+        th.sort-desc .sort-icon {
+            content: "▼";
         }
     </style>
 </head>
@@ -138,7 +137,6 @@
     </footer>
 
     <script>
-        // Store the Bib content in an array
         const bibArray = [
             `@article{gharleghi2022automated,
   title={Automated segmentation of normal and diseased coronary arteries--the asoca challenge},
@@ -180,18 +178,21 @@
 
         function sortTable(columnIndex, header) {
             const table = document.querySelector("table");
-            const rows = Array.from(table.rows).slice(1);
-            const isNumeric = columnIndex === 4; 
+            const rows = Array.from(table.rows).slice(1); 
+            const isNumeric = columnIndex === 4;
 
             let sortDirection = header.classList.contains("sort-asc") ? "desc" : "asc";
 
             if (lastSortedColumn && lastSortedColumn !== header) {
                 lastSortedColumn.classList.remove("sort-asc", "sort-desc");
+                lastSortedColumn.querySelector(".sort-icon").innerText = "▲▼"; 
             }
             lastSortedColumn = header;
 
             header.classList.remove("sort-asc", "sort-desc");
             header.classList.add(sortDirection === "asc" ? "sort-asc" : "sort-desc");
+
+            header.querySelector(".sort-icon").innerText = sortDirection === "asc" ? "▲" : "▼";
 
             rows.sort((rowA, rowB) => {
                 const cellA = rowA.cells[columnIndex].innerText.trim();
@@ -207,7 +208,6 @@
 
             rows.forEach(row => table.tBodies[0].appendChild(row)); 
         }
-
     </script>
 </body>
 </html>
