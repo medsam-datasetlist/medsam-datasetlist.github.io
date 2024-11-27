@@ -58,6 +58,7 @@
 
         th {
             background-color: #f2f2f2;
+            cursor: pointer;
         }
 
         .copy-button {
@@ -83,11 +84,17 @@
             margin-left: 5px;
             display: inline-flex;
             vertical-align: middle;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.7em;
         }
 
-        .sort-icon svg.icon-up,
-        .sort-icon svg.icon-down {
+        .sort-icon svg {
             display: none;
+        }
+
+        th:not(.sort-asc):not(.sort-desc) .icon-updown {
+            display: inline;
         }
 
         th.sort-asc .icon-up {
@@ -96,6 +103,13 @@
 
         th.sort-desc .icon-down {
             display: inline;
+        }
+
+        .icon-up,
+        .icon-down,
+        .icon-updown {
+            width: 16px;
+            height: 16px;
         }
     </style>
 </head>
@@ -113,69 +127,48 @@
         <table>
             <thead>
                 <tr>
-                    <th onclick="sortTable(0, this)">Dataset Name 
-                        <span class="sort-icon"> 
-                            <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                    <th onclick="sortTable(0, this)">Dataset Name
+                        <span class="sort-icon">
+                            <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 8l6 6H6z"></path>
                             </svg>
-                            <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                            <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 16l6-6H6z"></path>
+                            </svg>
+                            <svg class="icon-updown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8l6 6H6z"></path>
                                 <path d="M12 16l6-6H6z"></path>
                             </svg>
                         </span>
                     </th>
-                    <th onclick="sortTable(1, this)">Anatomy 
-                        <span class="sort-icon"> 
-                            <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                    <th onclick="sortTable(1, this)">Anatomy
+                        <span class="sort-icon">
+                            <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 8l6 6H6z"></path>
                             </svg>
-                            <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                            <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 16l6-6H6z"></path>
+                            </svg>
+                            <svg class="icon-updown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8l6 6H6z"></path>
                                 <path d="M12 16l6-6H6z"></path>
                             </svg>
                         </span>
                     </th>
-                    <th onclick="sortTable(2, this)">Modality 
-                        <span class="sort-icon"> 
-                            <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                    <th onclick="sortTable(2, this)">Modality
+                        <span class="sort-icon">
+                            <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 8l6 6H6z"></path>
                             </svg>
-                            <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                            <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 16l6-6H6z"></path>
+                            </svg>
+                            <svg class="icon-updown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8l6 6H6z"></path>
                                 <path d="M12 16l6-6H6z"></path>
                             </svg>
                         </span>
                     </th>
-                    <th onclick="sortTable(3, this)">Segmentation Targets 
-                        <span class="sort-icon"> 
-                            <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                <path d="M12 8l6 6H6z"></path>
-                            </svg>
-                            <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                <path d="M12 16l6-6H6z"></path>
-                            </svg>
-                        </span>
-                    </th>
-                    <th onclick="sortTable(4, this)">Images 
-                        <span class="sort-icon"> 
-                            <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                <path d="M12 8l6 6H6z"></path>
-                            </svg>
-                            <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                <path d="M12 16l6-6H6z"></path>
-                            </svg>
-                        </span>
-                    </th>
-                    <th onclick="sortTable(5, this)">License 
-                        <span class="sort-icon"> 
-                            <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                <path d="M12 8l6 6H6z"></path>
-                            </svg>
-                            <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                <path d="M12 16l6-6H6z"></path>
-                            </svg>
-                        </span>
-                    </th>
-                    <th>Data</th>
-                    <th>Paper Links</th>
-                    <th>Bib</th>
                 </tr>
             </thead>
             <tbody>
@@ -183,27 +176,11 @@
                     <td>Coronary Arteries</td>
                     <td>ASOCA</td>
                     <td>CCTA</td>
-                    <td>Coronary Arteries</td>
-                    <td>40,20</td>
-                    <td>Unknown</td>
-                    <td><a href="https://reshare.ukdataservice.ac.uk/855916/" target="_blank">Link</a></td>
-                    <td><a href="https://doi.org/10.1016/j.crad.2020.01.012" target="_blank">Link</a></td>
-                    <td>
-                        <button class="copy-button" onclick="copyBib(0, this)">Copy</button>
-                    </td>
                 </tr>
                 <tr>
                     <td>Pelvis</td>
                     <td>Prostate Anatomical Edge Cases</td>
                     <td>CT</td>
-                    <td>5 classes</td>
-                    <td>131</td>
-                    <td>CC BY 4.0</td>
-                    <td><a href="https://www.cancerimagingarchive.net" target="_blank">Link</a></td>
-                    <td><a href="https://doi.org/10.1016/j.crad.2020.01.012" target="_blank">Link</a></td>
-                    <td>
-                        <button class="copy-button" onclick="copyBib(1, this)">Copy</button>
-                    </td>
                 </tr>
             </tbody>
         </table>
@@ -213,49 +190,11 @@
     </footer>
 
     <script>
-        const bibArray = [
-            `@article{gharleghi2022automated,
-  title={Automated segmentation of normal and diseased coronary arteries--the asoca challenge},
-  author={Gharleghi, Ramtin and others},
-  journal={Computerized Medical Imaging and Graphics},
-  volume={97},
-  pages={102049},
-  year={2022},
-  publisher={Elsevier}
-}`,
-            `@article{kanwar2023stress,
-  title={Stress-testing pelvic autosegmentation algorithms using anatomical edge cases},
-  author={Kanwar, Aasheesh and Merz, Brandon and Claunch, Cheryl and Rana, Shushan and Hung, Arthur and Thompson, Reid F},
-  journal={Physics and Imaging in Radiation Oncology},
-  volume={25},
-  pages={100413},
-  year={2023},
-  publisher={Elsevier}
-}`
-        ];
-
-        function copyBib(index, button) {
-            const content = bibArray[index];
-            navigator.clipboard.writeText(content).then(() => {
-
-                button.disabled = true;
-                const originalText = button.innerText;
-                button.innerText = "Copied!";
-                setTimeout(() => {
-                    button.disabled = false;
-                    button.innerText = originalText;
-                }, 2000);
-            }).catch(err => {
-                console.error("Copy failed: ", err);
-            });
-        }
-
         let lastSortedColumn = null;
 
         function sortTable(columnIndex, header) {
             const table = document.querySelector("table");
             const rows = Array.from(table.rows).slice(1);
-            const isNumeric = columnIndex === 4;
 
             let sortDirection = header.classList.contains("sort-asc") ? "desc" : "asc";
 
@@ -270,12 +209,6 @@
             rows.sort((rowA, rowB) => {
                 const cellA = rowA.cells[columnIndex].innerText.trim();
                 const cellB = rowB.cells[columnIndex].innerText.trim();
-
-                if (isNumeric) {
-                    const numA = parseFloat(cellA.replace(/,/g, ''));
-                    const numB = parseFloat(cellB.replace(/,/g, ''));
-                    return sortDirection === "asc" ? numA - numB : numB - numA;
-                }
                 return sortDirection === "asc" ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
             });
 
