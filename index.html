@@ -56,9 +56,14 @@
             padding: 5px 10px;
             cursor: pointer;
             border-radius: 4px;
+            transition: background-color 0.3s ease;
         }
         .copy-button:hover {
             background-color: #45a049;
+        }
+        .copy-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
         }
     </style>
 </head>
@@ -68,8 +73,8 @@
     </header>
     <main>
         <p>This is a demo website for listing and managing datasets.</p>
-        <!-- <p>You can edit this page to include more details about your project.</p> -->
-        <!-- <a href="https://github.com/Medsam-DatasetList">Visit our GitHub Repository</a> -->
+        <p>You can edit this page to include more details about your project.</p>
+        <a href="https://github.com/Medsam-DatasetList">Visit our GitHub Repository</a>
 
         <h2>Dataset Table</h2>
         <table>
@@ -90,7 +95,7 @@
                     <td><a href="https://doi.org/10.1016/j.crad.2020.01.012" target="_blank">Link</a></td>
                     <td>nan</td>
                     <td>
-                        <button class="copy-button" onclick="copyBib(0)">Copy</button>
+                        <button class="copy-button" onclick="copyBib(0, this)">Copy</button>
                     </td>
                 </tr>
                 <tr>
@@ -104,7 +109,7 @@
                     <td><a href="https://doi.org/10.1016/j.crad.2020.01.012" target="_blank">Link</a></td>
                     <td>nan</td>
                     <td>
-                        <button class="copy-button" onclick="copyBib(1)">Copy</button>
+                        <button class="copy-button" onclick="copyBib(1, this)">Copy</button>
                     </td>
                 </tr>
             </tbody>
@@ -138,10 +143,17 @@
         ];
 
         // Copy the selected Bib content to the clipboard
-        function copyBib(index) {
+        function copyBib(index, button) {
             const content = bibArray[index];
             navigator.clipboard.writeText(content).then(() => {
-                alert("Content copied to clipboard!");
+                // Temporarily disable the button and change its text
+                button.disabled = true;
+                const originalText = button.innerText;
+                button.innerText = "Copied!";
+                setTimeout(() => {
+                    button.disabled = false;
+                    button.innerText = originalText;
+                }, 2000); // Re-enable the button after 2 seconds
             }).catch(err => {
                 console.error("Copy failed: ", err);
             });
