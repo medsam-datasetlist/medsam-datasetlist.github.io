@@ -86,6 +86,7 @@
         }
 
         .sort-icon svg {
+            display: inline;
             width: 12px;
             height: 12px;
             fill: gray;
@@ -94,7 +95,6 @@
         .sort-icon svg.icon-up,
         .sort-icon svg.icon-down {
             display: none;
-            /* 默认隐藏 */
         }
 
         th.sort-asc .icon-up {
@@ -120,7 +120,9 @@
         <table>
             <thead>
                 <tr>
-                    <th onclick="sortTable(0, this)">Dataset Name <span class="sort-icon"> <svg class="icon-up"
+                    <th onclick="sortTable(0, this)">Dataset Name 
+                        <span class="sort-icon"> 
+                            <svg class="icon-up"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"
                                 style="display: none;">
                                 <path d="M12 8l6 6H6z"></path>
@@ -128,8 +130,12 @@
                             <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12"
                                 height="12" style="display: none;">
                                 <path d="M12 16l6-6H6z"></path>
-                            </svg></span></th>
-                    <th onclick="sortTable(1, this)">Anatomy <span class="sort-icon"> <svg class="icon-up"
+                            </svg>
+                        </span>
+                    </th>
+                    <th onclick="sortTable(1, this)">Anatomy 
+                        <span class="sort-icon"> 
+                            <svg class="icon-up"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"
                                 style="display: none;">
                                 <path d="M12 8l6 6H6z"></path>
@@ -137,8 +143,12 @@
                             <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12"
                                 height="12" style="display: none;">
                                 <path d="M12 16l6-6H6z"></path>
-                            </svg></span></th>
-                    <th onclick="sortTable(2, this)">Modality <span class="sort-icon"> <svg class="icon-up"
+                            </svg>
+                        </span>
+                    </th>
+                    <th onclick="sortTable(2, this)">Modality 
+                        <span class="sort-icon"> 
+                            <svg class="icon-up"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"
                                 style="display: none;">
                                 <path d="M12 8l6 6H6z"></path>
@@ -146,8 +156,12 @@
                             <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12"
                                 height="12" style="display: none;">
                                 <path d="M12 16l6-6H6z"></path>
-                            </svg></span></th>
-                    <th onclick="sortTable(3, this)">Segmentation Targets <span class="sort-icon"> <svg class="icon-up"
+                            </svg>
+                        </span>
+                    </th>
+                    <th onclick="sortTable(3, this)">Segmentation Targets 
+                        <span class="sort-icon"> 
+                            <svg class="icon-up"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"
                                 style="display: none;">
                                 <path d="M12 8l6 6H6z"></path>
@@ -155,8 +169,12 @@
                             <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12"
                                 height="12" style="display: none;">
                                 <path d="M12 16l6-6H6z"></path>
-                            </svg></span></th>
-                    <th onclick="sortTable(4, this)">Images <span class="sort-icon"> <svg class="icon-up"
+                            </svg>
+                        </span>
+                    </th>
+                    <th onclick="sortTable(4, this)">Images 
+                        <span class="sort-icon"> 
+                            <svg class="icon-up"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"
                                 style="display: none;">
                                 <path d="M12 8l6 6H6z"></path>
@@ -164,8 +182,12 @@
                             <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12"
                                 height="12" style="display: none;">
                                 <path d="M12 16l6-6H6z"></path>
-                            </svg></span></th>
-                    <th onclick="sortTable(5, this)">License <span class="sort-icon"> <svg class="icon-up"
+                            </svg>
+                        </span>
+                    </th>
+                    <th onclick="sortTable(5, this)">License 
+                        <span class="sort-icon"> 
+                            <svg class="icon-up"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"
                                 style="display: none;">
                                 <path d="M12 8l6 6H6z"></path>
@@ -173,7 +195,9 @@
                             <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12"
                                 height="12" style="display: none;">
                                 <path d="M12 16l6-6H6z"></path>
-                            </svg></span></th>
+                            </svg>
+                        </span>
+                    </th>
                     <th>Data</th>
                     <th>Paper Links</th>
                     <th>Bib</th>
