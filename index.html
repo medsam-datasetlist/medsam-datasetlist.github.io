@@ -127,7 +127,7 @@
         <table id="dataset-table">
             <thead>
                 <tr>
-                    <th onclick="sortTable(0, this)">Dataset Name
+                    <th onclick="sortTable(0, this)">Year
                         <span class="sort-icon">
                             <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 8l6 6H6z"></path>
@@ -141,7 +141,7 @@
                             </svg>
                         </span>
                     </th>
-                    <th onclick="sortTable(1, this)">Anatomy
+                    <th onclick="sortTable(1, this)">Dataset Name
                         <span class="sort-icon">
                             <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 8l6 6H6z"></path>
@@ -155,7 +155,7 @@
                             </svg>
                         </span>
                     </th>
-                    <th onclick="sortTable(2, this)">Modality
+                    <th onclick="sortTable(2, this)">Anatomy
                         <span class="sort-icon">
                             <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 8l6 6H6z"></path>
@@ -169,7 +169,21 @@
                             </svg>
                         </span>
                     </th>
-                    <th onclick="sortTable(3, this)">Segmentation Targets 
+                    <th onclick="sortTable(3, this)">Modality
+                        <span class="sort-icon">
+                            <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8l6 6H6z"></path>
+                            </svg>
+                            <svg class="icon-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 16l6-6H6z"></path>
+                            </svg>
+                            <svg class="icon-updown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                                <path d="M12 6l-5 5h10z"></path>
+                                <path d="M12 18l5-5H7z"></path>
+                            </svg>
+                        </span>
+                    </th>
+                    <th onclick="sortTable(4, this)">Segmentation Targets 
                         <span class="sort-icon"> 
                             <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
                                 <path d="M12 8l6 6H6z"></path>
@@ -183,7 +197,7 @@
                             </svg>
                         </span>
                     </th>
-                    <th onclick="sortTable(4, this)">Images 
+                    <th onclick="sortTable(5, this)">Images 
                         <span class="sort-icon"> 
                             <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
                                 <path d="M12 8l6 6H6z"></path>
@@ -197,7 +211,7 @@
                             </svg>
                         </span>
                     </th>
-                    <th onclick="sortTable(5, this)">License 
+                    <th onclick="sortTable(6, this)">License 
                         <span class="sort-icon"> 
                             <svg class="icon-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
                                 <path d="M12 8l6 6H6z"></path>
@@ -251,19 +265,21 @@
             rows.forEach(row => table.tBodies[0].appendChild(row));
         }
 
-
         async function loadCSV() {
             const response = await fetch('datasets.csv');
             const csvText = await response.text();
             const rows = csvText.split('\n').map(row => row.split(','));
 
             const tableBody = document.querySelector('#dataset-table tbody');
+            const columnsToKeep = [9];
             rows.slice(1).forEach((row, index) => {
                 const tr = document.createElement('tr');
-                row.forEach(cell => {
-                    const td = document.createElement('td');
-                    td.textContent = cell.trim();
-                    tr.appendChild(td);
+                columnsToKeep.forEach(colIndex => {
+                    if (row[colIndex] !== undefined) {
+                        const td = document.createElement('td');
+                        td.textContent = row[colIndex].trim();
+                        tr.appendChild(td);
+                    }
                 });
 
 
@@ -279,7 +295,6 @@
             });
         }
 
-
         function copyBib(rowIndex, button) {
             const table = document.querySelector("#dataset-table");
             const row = table.rows[rowIndex + 1]; 
@@ -289,7 +304,6 @@
                 setTimeout(() => button.textContent = 'Copy', 2000);
             });
         }
-
 
         window.onload = loadCSV;
     </script>
