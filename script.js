@@ -24,9 +24,9 @@ function sortTable(columnIndex, header) {
 }
 
 async function loadCSV() {
-    const response = await fetch('datasets.csv');
+    const response = await fetch('datasets.tsv');
     const csvText = await response.text();
-    const rows = csvText.split('\n').map(row => row.split(','));
+    const rows = csvText.split('\n').map(row => row.split('\t'));
 
     const tableBody = document.querySelector('#dataset-table tbody');
     const columnsToKeep = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10];
