@@ -35,28 +35,23 @@ async function loadCSV() {
         columnsToKeep.forEach(colIndex => {
             if (row[colIndex] !== undefined) {
                 const td = document.createElement('td');
-                td.textContent = row[colIndex].trim();
+                if (i === 9) { 
+                    const button = document.createElement('button');
+                    button.textContent = 'Copy';
+                    button.classList.add('copy-button');
+                    button.onclick = () => copyBib(row[colIndex], button); 
+                    td.appendChild(button);
+                } else {
+                    td.textContent = row[colIndex].trim();
+                }
                 tr.appendChild(td);
             }
         });
-
-
-        const tdBib = document.createElement('td');
-        const button = document.createElement('button');
-        button.textContent = 'Copy';
-        button.classList.add('copy-button');
-        button.onclick = () => copyBib(index, button);
-        tdBib.appendChild(button);
-        tr.appendChild(tdBib);
-
         tableBody.appendChild(tr);
     });
 }
 
-function copyBib(rowIndex, button) {
-    const table = document.querySelector("#dataset-table");
-    const row = table.rows[rowIndex + 1]; 
-    const bibContent = row.cells[10].innerText; 
+function copyBib(bibContent, button) {
     navigator.clipboard.writeText(bibContent).then(() => {
         button.textContent = 'Copied';
         setTimeout(() => button.textContent = 'Copy', 2000);
