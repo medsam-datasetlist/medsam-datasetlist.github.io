@@ -1,0 +1,40 @@
+Year,Dataset Name,"Anatomy (Brain, Head, Neck, Eye, Cell, Chest, Heart, Abdomen, Pelvis, Vessel, Skin)",Modality,Segmentation Targets,# images,License,Data,Paper links,Note,bib
+2022,WORD,Abdomen,CT,Abdomen organs,170,GNU General Public License v3.0,https://github.com/HiLab-git/WORD,https://www.sciencedirect.com/science/article/pii/S1361841522002705,Authors are very responsive for data request,"@article{luo2022word,
+  title={WORD: A large scale dataset, benchmark and clinical applicable study for abdominal organ segmentation from CT image},
+  author={Luo, Xiangde and Liao, Wenjun and Xiao, Jianghong and Chen, Jieneng and Song, Tao and Zhang, Xiaofan and Li, Kang and Metaxas, Dimitris N and Wang, Guotai and Zhang, Shaoting},
+  journal={Medical Image Analysis},
+  volume={82},
+  pages={102642},
+  year={2022}
+}"
+2017,Kvasir-SEG,Abdomen,Endoscopy,Polyp,1000,CC0,https://www.kaggle.com/datasets/abdallahwagih/kvasir-dataset-for-classification-and-segmentation,"https://doi.org/10.1007/978-3-030-37734-2_37
+https://doi.org/10.1145/3193289",Included in training set,"@inproceedings{jha2020kvasir,
+  title={Kvasir-seg: A segmented polyp dataset},
+  author={Jha, Debesh and Smedsrud, Pia H and Riegler, Michael A and Halvorsen, P{\aa}l and de Lange, Thomas and Johansen, Dag and Johansen, H{\aa}vard D},
+  booktitle={MultiMedia Modeling: 26th International Conference, MMM 2020, Daejeon, South Korea, January 5--8, 2020, Proceedings, Part II 26},
+  pages={451--462},
+  year={2020}
+}
+@inproceedings{pogorelov2017kvasir,
+  title={Kvasir: A multi-class image dataset for computer aided gastrointestinal disease detection},
+  author={Pogorelov, Konstantin and Randel, Kristin Ranheim and Griwodz, Carsten and Eskeland, Sigrun Losada and de Lange, Thomas and Johansen, Dag and Spampinato, Concetto and Dang-Nguyen, Duc-Tien and Lux, Mathias and Schmidt, Peter Thelin and others},
+  booktitle={Proceedings of the 8th ACM on Multimedia Systems Conference},
+  pages={164--169},
+  year={2017}
+}"
+,CholecSeg8k,Abdomen,Endoscopy,Tissues and instruments,8000,CC BY-NC-SA 4.0,https://www.kaggle.com/datasets/newslab/cholecseg8k,"https://doi.org/10.48550/arXiv.2012.12453
+https://doi.org/10.48550/arXiv.1602.03012",Included in training set,"@article{hong2020cholecseg8k,
+  title={Cholecseg8k: a semantic segmentation dataset for laparoscopic cholecystectomy based on cholec80},
+  author={Hong, W-Y and Kao, C-L and Kuo, Y-H and Wang, J-R and Chang, W-L and Shih, C-S},
+  journal={arXiv preprint arXiv:2012.12453},
+  year={2020}
+}
+@article{twinanda2016endonet,
+  title={Endonet: a deep architecture for recognition tasks on laparoscopic videos},
+  author={Twinanda, Andru P and Shehata, Sherif and Mutter, Didier and Marescaux, Jacques and De Mathelin, Michel and Padoy, Nicolas},
+  journal={IEEE Transactions on Medical Imaging},
+  volume={36},
+  number={1},
+  pages={86--97},
+  year={2016}
+}"

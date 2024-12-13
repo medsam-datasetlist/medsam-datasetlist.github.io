@@ -124,7 +124,7 @@
         <a href="https://github.com/Medsam-DatasetList">Visit our GitHub Repository</a>
 
         <h2>Dataset Table</h2>
-        <table>
+        <table id="dataset-table">
             <thead>
                 <tr>
                     <th onclick="sortTable(0, this)">Dataset Name
@@ -254,7 +254,7 @@
         let lastSortedColumn = null;
 
         function sortTable(columnIndex, header) {
-            const table = document.querySelector("table");
+            const table = document.querySelector("#dataset-table");
             const rows = Array.from(table.rows).slice(1);
 
             let sortDirection = header.classList.contains("sort-asc") ? "desc" : "asc";
@@ -275,6 +275,48 @@
 
             rows.forEach(row => table.tBodies[0].appendChild(row));
         }
+
+
+        async function loadCSV() {
+            const response = await fetch('datasets.csv');
+            const csvText = await response.text();
+            const rows = csvText.split('\n').map(row => row.split(','));
+
+            const tableBody = document.querySelector('#dataset-table tbody');
+            rows.slice(1).forEach((row, index) => {
+                const tr = document.createElement('tr');
+                row.forEach(cell => {
+                    const td = document.createElement('td');
+                    td.textContent = cell.trim();
+                    tr.appendChild(td);
+                });
+
+
+                const tdBib = document.createElement('td');
+                const button = document.createElement('button');
+                button.textContent = 'Copy';
+                button.classList.add('copy-button');
+                button.onclick = () => copyBib(index, button);
+                tdBib.appendChild(button);
+                tr.appendChild(tdBib);
+
+                tableBody.appendChild(tr);
+            });
+        }
+
+
+        function copyBib(rowIndex, button) {
+            const table = document.querySelector("#dataset-table");
+            const row = table.rows[rowIndex + 1]; 
+            const bibContent = row.cells[8].innerText; 
+            navigator.clipboard.writeText(bibContent).then(() => {
+                button.textContent = 'Copied';
+                setTimeout(() => button.textContent = 'Copy', 2000);
+            });
+        }
+
+
+        window.onload = loadCSV;
     </script>
 </body>
 
