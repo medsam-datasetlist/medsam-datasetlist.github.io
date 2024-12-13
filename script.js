@@ -55,7 +55,7 @@ function formatBibTex(bibTex) {
     const formatted = bibTex
         .replace(/,\s+/g, ",\n  ")
         .replace(/\{\s+/g, "{\n  ")
-        .replace(/,\s*\}$/g, "\n}");
+        .replace(/}\s*$/, "\n}");
     return formatted;
 }
 
