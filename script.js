@@ -32,7 +32,7 @@ async function loadCSV() {
     const columnsToKeep = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10];
     rows.slice(1).forEach((row, index) => {
         const tr = document.createElement('tr');
-        columnsToKeep.forEach(colIndex => {
+        columnsToKeep.forEach((colIndex, i) => {
             if (row[colIndex] !== undefined) {
                 const td = document.createElement('td');
                 if (i === 9) { 
