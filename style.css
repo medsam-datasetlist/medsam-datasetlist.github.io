@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+    background-color: #ddd;
+    color: #333;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.copy-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+    background-color: #45a049;
+}
+
+.copy-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.sort-icon {
+    margin-left: 5px;
+    display: inline-flex;
+    vertical-align: middle;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.7em;
+}
+
+.sort-icon svg {
+    display: none;
+}
+
+th:not(.sort-asc):not(.sort-desc) .icon-updown {
+    display: inline;
+}
+
+th.sort-asc .icon-up {
+    display: inline;
+}
+
+th.sort-desc .icon-down {
+    display: inline;
+}
+
+.icon-up,
+.icon-down,
+.icon-updown {
+    width: 16px;
+    height: 16px;
+}
