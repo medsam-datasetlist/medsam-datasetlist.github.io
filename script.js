@@ -51,7 +51,17 @@ async function loadCSV() {
     });
 }
 
+function formatBibTex(bibTex) {
+    const formatted = bibTex
+        .replace(/,\s+/g, ",\n  ")
+        .replace(/\{\s+/g, "{\n  ")
+        .replace(/,\s*\}$/g, "\n}");
+    return formatted;
+}
+
+
 function copyBib(bibContent, button) {
+    const formattedBib = formatBibTex(bibContent);
     navigator.clipboard.writeText(bibContent).then(() => {
         button.textContent = 'Copied';
         setTimeout(() => button.textContent = 'Copy', 2000);
