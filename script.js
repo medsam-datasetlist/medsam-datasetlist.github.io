@@ -62,7 +62,7 @@ function formatBibTex(bibTex) {
 
 function copyBib(bibContent, button) {
     const formattedBib = formatBibTex(bibContent);
-    navigator.clipboard.writeText(bibContent).then(() => {
+    navigator.clipboard.writeText(formattedBib).then(() => {
         button.textContent = 'Copied';
         setTimeout(() => button.textContent = 'Copy', 2000);
     });
