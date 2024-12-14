@@ -106,7 +106,18 @@ async function loadExcel() {
             ? row[colIndex].toString().trim() 
             : "";
             const td = document.createElement('td');
-            if (i === 9 && cellValue) { 
+            if ((i === 6 || i === 7) && cellValue) { 
+                const cell = worksheet[XLSX.utils.encode_cell({ r: index + 1, c: colIndex })];
+                if (cell && cell.l && cell.l.Target) { 
+                    const link = document.createElement('a');
+                    link.href = cell.l.Target;
+                    link.textContent = cell.v || "Link";
+                    link.target = "_blank"; 
+                    td.appendChild(link);
+                } else {
+                    td.textContent = cellValue;
+                }
+            } else  if (i === 9 && cellValue) { 
                 const bibEntries = cellValue.split(/(?=@\w+\s*\{)/);
                 bibEntries.forEach(bibEntry => {
                     if (bibEntry.trim()) {
