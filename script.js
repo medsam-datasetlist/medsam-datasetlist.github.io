@@ -39,16 +39,16 @@ async function loadCSV() {
                     const bibEntries = row[colIndex].split(/(?=@\w+\s*\{)/);
                     bibEntries.forEach(bibEntry => {
                         if (bibEntry.trim()) {
-                            const entryDiv = document.createElement('div');
-                            entryDiv.classList.add('bib-entry');
+                            const buttonWrapper = document.createElement('div');
+                            buttonWrapper.classList.add('button-wrapper'); 
                 
                             const button = document.createElement('button');
                             button.textContent = 'Copy';
                             button.classList.add('copy-button');
                             button.onclick = () => copyBib(bibEntry.trim(), button);
                 
-                            entryDiv.appendChild(button);
-                            td.appendChild(entryDiv);
+                            buttonWrapper.appendChild(button);
+                            td.appendChild(buttonWrapper);
                         }
                     })
 
