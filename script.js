@@ -108,14 +108,28 @@ async function loadExcel() {
             const td = document.createElement('td');
             if ((i === 7 || i === 8) && cellValue) { 
                 const cell = worksheet[XLSX.utils.encode_cell({ r: index + 1, c: colIndex })];
-                if (cell && cell.l && cell.l.Target) { 
-                    const link = document.createElement('a');
-                    link.href = cell.l.Target;
-                    link.textContent = cell.v || "Link";
-                    link.target = "_blank"; 
-                    td.appendChild(link);
+                if (cell && cell.v) {
+                    const textContent = cell.v.trim();
+                    const linkRegex = /(https?:\/\/[^\s]+)/g;
+                    const links = textContent.match(linkRegex);
+                    if (links) {
+                        links.forEach(linkUrl => {
+                            const link = document.createElement('a');
+                            link.href = linkUrl;
+                            link.textContent = "Link";
+                            link.target = "_blank";
+                            td.appendChild(link);
+                            td.appendChild(document.createElement('br'));
+                        });
+                    } else if (cell.l && cell.l.Target) {
+                        const link = document.createElement('a');
+                        link.href = cell.l.Target;
+                        link.textContent = textContent || "Link";
+                        link.target = "_blank";
+                        td.appendChild(link);
+                    }
                 } else {
-                    td.textContent = cellValue;
+                    td.textContent = textContent;
                 }
             } else  if (i === 9 && cellValue) { 
                 const bibEntries = cellValue.split(/(?=@\w+\s*\{)/);
