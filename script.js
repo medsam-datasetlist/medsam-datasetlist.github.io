@@ -119,7 +119,7 @@ async function loadExcel() {
                         }
                     });
                 } else {
-                    td.textContent = row[colIndex].trim();
+                    td.textContent = row[colIndex];
                 }
                 tr.appendChild(td);
             }
