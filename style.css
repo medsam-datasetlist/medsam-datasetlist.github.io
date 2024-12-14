@@ -113,3 +113,22 @@ th.sort-desc .icon-down {
     padding: 5px 10px;
     font-size: 14px;
 }
+
+.link-wrapper {
+    margin-bottom: 8px; 
+}
+
+.link-button {
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.link-button:hover {
+    background-color: #45a049;
+}
+

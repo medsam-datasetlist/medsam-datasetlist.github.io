@@ -72,19 +72,26 @@ async function loadExcel() {
                     const links = textContent.match(linkRegex);
                     if (links) {
                         links.forEach(linkUrl => {
+                            const linkWrapper = document.createElement('div');
+                            linkWrapper.classList.add('link-wrapper');
                             const link = document.createElement('a');
                             link.href = linkUrl;
                             link.textContent = "Link";
                             link.target = "_blank";
-                            td.appendChild(link);
-                            td.appendChild(document.createElement('br'));
+                            link.classList.add('link-button');
+                            linkWrapper.appendChild(link);
+                            td.appendChild(linkWrapper);
                         });
                     } else if (cell.l && cell.l.Target) {
+                        const linkWrapper = document.createElement('div');
+                        linkWrapper.classList.add('link-wrapper');
                         const link = document.createElement('a');
                         link.href = cell.l.Target;
                         link.textContent = textContent || "Link";
                         link.target = "_blank";
-                        td.appendChild(link);
+                        link.classList.add('link-button');
+                        linkWrapper.appendChild(link);
+                        td.appendChild(linkWrapper);
                     }
                 } else {
                     td.textContent = textContent;
