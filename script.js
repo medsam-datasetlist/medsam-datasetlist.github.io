@@ -106,7 +106,7 @@ async function loadExcel() {
             ? row[colIndex].toString().trim() 
             : "";
             const td = document.createElement('td');
-            if ((i === 6 || i === 7) && cellValue) { 
+            if ((i === 7 || i === 8) && cellValue) { 
                 const cell = worksheet[XLSX.utils.encode_cell({ r: index + 1, c: colIndex })];
                 if (cell && cell.l && cell.l.Target) { 
                     const link = document.createElement('a');
