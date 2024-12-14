@@ -48,10 +48,10 @@ async function loadCSV() {
                             button.onclick = () => copyBib(bibEntry.trim(), button);
                 
                             entryDiv.appendChild(button);
-
+                            td.appendChild(entryDiv);
                         }
                     })
-                    td.appendChild(entryDiv);
+
                     // const button = document.createElement('button');
                     // button.textContent = 'Copy';
                     // button.classList.add('copy-button');
