@@ -36,11 +36,27 @@ async function loadCSV() {
             if (row[colIndex] !== undefined) {
                 const td = document.createElement('td');
                 if (i === 9) { 
-                    const button = document.createElement('button');
-                    button.textContent = 'Copy';
-                    button.classList.add('copy-button');
-                    button.onclick = () => copyBib(row[colIndex], button); 
-                    td.appendChild(button);
+                    const bibEntries = row[colIndex].split(/(?=@\w+\s*\{)/);
+                    bibEntries.forEach(bibEntry => {
+                        if (bibEntry.trim()) {
+                            const entryDiv = document.createElement('div');
+                            entryDiv.classList.add('bib-entry');
+                
+                            const button = document.createElement('button');
+                            button.textContent = 'Copy';
+                            button.classList.add('copy-button');
+                            button.onclick = () => copyBib(bibEntry.trim(), button);
+                
+                            entryDiv.appendChild(button);
+
+                        }
+                    })
+                    td.appendChild(entryDiv);
+                    // const button = document.createElement('button');
+                    // button.textContent = 'Copy';
+                    // button.classList.add('copy-button');
+                    // button.onclick = () => copyBib(row[colIndex], button); 
+                    // td.appendChild(button);
                 } else {
                     td.textContent = row[colIndex].trim();
                 }
