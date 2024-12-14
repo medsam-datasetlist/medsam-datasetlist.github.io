@@ -23,55 +23,6 @@ function sortTable(columnIndex, header) {
     rows.forEach(row => table.tBodies[0].appendChild(row));
 }
 
-async function loadCSV() {
-    const response = await fetch('datasets.tsv');
-    const csvText = await response.text();
-    const rows = csvText.split('\n').map(row => row.split('\t'));
-
-    const tableBody = document.querySelector('#dataset-table tbody');
-    const columnsToKeep = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10];
-    rows.slice(1).forEach((row, index) => {
-        const tr = document.createElement('tr');
-        columnsToKeep.forEach((colIndex, i) => {
-            if (row[colIndex] !== undefined) {
-                const td = document.createElement('td');
-                if (i === 7) { 
-                    const link = document.createElement('a');
-                    link.href = row[colIndex].trim();
-                    link.target = '_blank';
-                    link.textContent = 'Link';
-                    td.appendChild(link);
-                } else if (i === 8) { 
-                    const link = document.createElement('a');
-                    link.href = row[colIndex].trim();
-                    link.target = '_blank';
-                    link.textContent = 'Link';
-                    td.appendChild(link);
-                } else  if (i === 9) { 
-                    const bibEntries = row[colIndex].split(/(?=@\w+\s*\{)/);
-                    bibEntries.forEach(bibEntry => {
-                        if (bibEntry.trim()) {
-                            const buttonWrapper = document.createElement('div');
-                            buttonWrapper.classList.add('button-wrapper'); 
-                
-                            const button = document.createElement('button');
-                            button.textContent = 'Copy';
-                            button.classList.add('copy-button');
-                            button.onclick = () => copyBib(bibEntry.trim(), button);
-                
-                            buttonWrapper.appendChild(button);
-                            td.appendChild(buttonWrapper);
-                        }
-                    })
-                } else {
-                    td.textContent = row[colIndex].trim();
-                }
-                tr.appendChild(td);
-            }
-        });
-        tableBody.appendChild(tr);
-    });
-}
 
 function formatBibTex(bibTex) {
     const formatted = bibTex
