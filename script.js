@@ -35,7 +35,19 @@ async function loadCSV() {
         columnsToKeep.forEach((colIndex, i) => {
             if (row[colIndex] !== undefined) {
                 const td = document.createElement('td');
-                if (i === 9) { 
+                if (i === 7) { 
+                    const link = document.createElement('a');
+                    link.href = row[colIndex].trim();
+                    link.target = '_blank';
+                    link.textContent = 'Link';
+                    td.appendChild(link);
+                } else if (i === 8) { 
+                    const link = document.createElement('a');
+                    link.href = row[colIndex].trim();
+                    link.target = '_blank';
+                    link.textContent = 'Link';
+                    td.appendChild(link);
+                } else  if (i === 9) { 
                     const bibEntries = row[colIndex].split(/(?=@\w+\s*\{)/);
                     bibEntries.forEach(bibEntry => {
                         if (bibEntry.trim()) {
@@ -51,12 +63,6 @@ async function loadCSV() {
                             td.appendChild(buttonWrapper);
                         }
                     })
-
-                    // const button = document.createElement('button');
-                    // button.textContent = 'Copy';
-                    // button.classList.add('copy-button');
-                    // button.onclick = () => copyBib(row[colIndex], button); 
-                    // td.appendChild(button);
                 } else {
                     td.textContent = row[colIndex].trim();
                 }
