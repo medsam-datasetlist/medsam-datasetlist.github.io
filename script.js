@@ -102,27 +102,29 @@ async function loadExcel() {
     jsonData.slice(1).forEach((row, index) => {
         const tr = document.createElement('tr');
         columnsToKeep.forEach((colIndex, i) => {
-            if (row[colIndex] !== undefined) {
-                const td = document.createElement('td');
-                if (i === 9) { 
-                    const bibEntries = row[colIndex].split(/(?=@\w+\s*\{)/);
-                    bibEntries.forEach(bibEntry => {
-                        if (bibEntry.trim()) {
-                            const buttonWrapper = document.createElement('div');
-                            buttonWrapper.classList.add('button-wrapper'); 
-                            const button = document.createElement('button');
-                            button.textContent = 'Copy';
-                            button.classList.add('copy-button');
-                            button.onclick = () => copyBib(bibEntry.trim(), button);
-                            buttonWrapper.appendChild(button);
-                            td.appendChild(buttonWrapper);
-                        }
-                    });
-                } else {
-                    td.textContent = row[colIndex];
-                }
-                tr.appendChild(td);
+            const cellValue = row[colIndex] !== undefined && row[colIndex] !== null 
+            ? row[colIndex].toString().trim() 
+            : "";
+            const td = document.createElement('td');
+            if (i === 9 && cellValue) { 
+                const bibEntries = cellValue.split(/(?=@\w+\s*\{)/);
+                bibEntries.forEach(bibEntry => {
+                    if (bibEntry.trim()) {
+                        const buttonWrapper = document.createElement('div');
+                        buttonWrapper.classList.add('button-wrapper'); 
+                        const button = document.createElement('button');
+                        button.textContent = 'Copy';
+                        button.classList.add('copy-button');
+                        button.onclick = () => copyBib(bibEntry.trim(), button);
+                        buttonWrapper.appendChild(button);
+                        td.appendChild(buttonWrapper);
+                    }
+                });
+            } else {
+                td.textContent = cellValue;
             }
+            tr.appendChild(td);
+
         });
         tableBody.appendChild(tr);
     });
