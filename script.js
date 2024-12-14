@@ -107,4 +107,3 @@ async function loadExcel() {
 }
 
 window.onload = loadExcel;
-// window.onload = loadCSV;
