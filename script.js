@@ -90,4 +90,43 @@ function copyBib(bibContent, button) {
     });
 }
 
-window.onload = loadCSV;
+async function loadExcel() {
+    const response = await fetch('datasets.xlsx');
+    const arrayBuffer = await response.arrayBuffer();
+    const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+    const tableBody = document.querySelector('#dataset-table tbody');
+    const columnsToKeep = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10];
+    jsonData.slice(1).forEach((row, index) => {
+        const tr = document.createElement('tr');
+        columnsToKeep.forEach((colIndex, i) => {
+            if (row[colIndex] !== undefined) {
+                const td = document.createElement('td');
+                if (i === 9) { 
+                    const bibEntries = row[colIndex].split(/(?=@\w+\s*\{)/);
+                    bibEntries.forEach(bibEntry => {
+                        if (bibEntry.trim()) {
+                            const buttonWrapper = document.createElement('div');
+                            buttonWrapper.classList.add('button-wrapper'); 
+                            const button = document.createElement('button');
+                            button.textContent = 'Copy';
+                            button.classList.add('copy-button');
+                            button.onclick = () => copyBib(bibEntry.trim(), button);
+                            buttonWrapper.appendChild(button);
+                            td.appendChild(buttonWrapper);
+                        }
+                    });
+                } else {
+                    td.textContent = row[colIndex].trim();
+                }
+                tr.appendChild(td);
+            }
+        });
+        tableBody.appendChild(tr);
+    });
+}
+
+window.onload = loadExcel;
+// window.onload = loadCSV;
