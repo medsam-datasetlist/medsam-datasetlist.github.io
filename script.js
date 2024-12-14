@@ -51,6 +51,13 @@ async function loadExcel() {
     const tableBody = document.querySelector('#dataset-table tbody');
     const columnsToKeep = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10];
     jsonData.slice(1).forEach((row, index) => {
+        const isRowEmpty = row.every((cell, colIndex) => 
+            !columnsToKeep.includes(colIndex) || !cell || cell.toString().trim() === ""
+        );
+
+        if (isRowEmpty) {
+            return;
+        }
         const tr = document.createElement('tr');
         columnsToKeep.forEach((colIndex, i) => {
             const cellValue = row[colIndex] !== undefined && row[colIndex] !== null 
