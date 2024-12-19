@@ -87,7 +87,7 @@ async function loadExcel() {
                         linkWrapper.classList.add('link-wrapper');
                         const link = document.createElement('a');
                         link.href = cell.l.Target;
-                        link.textContent = textContent || "Link";
+                        link.textContent = "Link"; //textContent || "Link";
                         link.target = "_blank";
                         link.classList.add('link-button');
                         linkWrapper.appendChild(link);
