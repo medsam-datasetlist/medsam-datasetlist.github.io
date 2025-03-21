@@ -42,14 +42,14 @@ function copyBib(bibContent, button) {
 }
 
 async function loadExcel() {
-    const response = await fetch('datasets.xlsx');
+    const response = await fetch('medsam-datalist.xlsx');
     const arrayBuffer = await response.arrayBuffer();
     const workbook = XLSX.read(arrayBuffer, { type: 'array' });
     const sheetName = workbook.SheetNames[0];
     const worksheet = workbook.Sheets[sheetName];
     const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
     const tableBody = document.querySelector('#dataset-table tbody');
-    const columnsToKeep = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10];
+    const columnsToKeep = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     jsonData.slice(1).forEach((row, index) => {
         const isRowEmpty = row.every((cell, colIndex) => 
             !columnsToKeep.includes(colIndex) || !cell || cell.toString().trim() === ""
@@ -64,7 +64,7 @@ async function loadExcel() {
             ? row[colIndex].toString().trim() 
             : "";
             const td = document.createElement('td');
-            if ((i === 7 || i === 8) && cellValue) { 
+            if ((i === 8 || i === 9) && cellValue) { 
                 const cell = worksheet[XLSX.utils.encode_cell({ r: index + 1, c: colIndex })];
                 if (cell && cell.v) {
                     const textContent = cell.v.trim();
@@ -96,7 +96,7 @@ async function loadExcel() {
                 } else {
                     td.textContent = textContent;
                 }
-            } else  if (i === 9 && cellValue) { 
+            } else  if (i === 10 && cellValue) { 
                 const bibEntries = cellValue.split(/(?=@\w+\s*\{)/);
                 bibEntries.forEach(bibEntry => {
                     if (bibEntry.trim()) {
